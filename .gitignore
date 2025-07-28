@@ -1,0 +1,13 @@
+# Gradle
+.gradle
+build/
+!build/resources/
+
+# Ignore IDE files
+.idea/
+*.iml
+*.iws
+
+# Ignore OS files
+.DS_Store
+Thumbs.db 

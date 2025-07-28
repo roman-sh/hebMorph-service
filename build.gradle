@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'com.hagar'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.javalin:javalin:5.6.3'
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+}
+
+application {
+    mainClass = 'com.hagar.hebmorph.Api'
+}
+
+tasks.shadowJar {
+    archiveBaseName.set('hebmorph-service')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+
+    from('src/main/resources/hspell-data-files') {
+        into 'hspell-data-files'
+    }
+}
