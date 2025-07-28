@@ -73,7 +73,7 @@ This behavior is implemented in the `Api.java` file and can be easily adjusted t
 
 ### Using Docker (Recommended)
 
-A pre-built image is available on Docker Hub.
+A pre-built image is available on [Docker Hub](https://hub.docker.com/repository/docker/shmigi/hebmorph-service/general).
 
 1.  **Pull the image:**
     ```bash
