@@ -47,17 +47,27 @@ The service returns a JSON object with a `results` key. The value is an array of
     [
       "מיץ",
       "ענב",
-      "ו",
       "תפוח"
     ],
     [
       "גבינה",
-      "קוטג'",
-      "טעים"
+      "קוטג׳",
+      "טעימה"
     ]
   ]
 }
 ```
+### Post-processing Logic
+
+To provide a cleaner and more predictable output, the service applies the following logic to the raw results from the HebMorph library:
+
+1.  **Tokenization**: Input sentences are split into words (tokens) by whitespace.
+2.  **Lemmatization**: Each token is passed to the HebMorph engine.
+3.  **Filtering & Selection**: For each token, the service processes the list of possible lemmas returned by the engine:
+    *   It takes the **first valid lemma** that is longer than one character.
+    *   If no valid lemma is found (e.g., the engine returns `null` or only single-character lemmas), it **falls back to the original word**.
+
+This behavior is implemented in the `Api.java` file and can be easily adjusted to suit different use cases, such as returning all possible lemmas or implementing a different filtering strategy.
 
 ## Getting Started
 
